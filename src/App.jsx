@@ -13,6 +13,10 @@ import Main, { mainLoader } from "./layouts/Main"
 //actions
 import { logoutAction } from "./actions/logout"
 
+//library
+import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/ReactToastify.css';
+
 const router = createBrowserRouter ([
   {
     path: "/",
@@ -41,6 +45,7 @@ function App() {
     <>
       <div className="App">
         <RouterProvider router={router} />
+        <ToastContainer />
       </div>
     </>
   )
