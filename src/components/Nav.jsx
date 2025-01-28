@@ -2,7 +2,7 @@
 import { Form, NavLink } from "react-router-dom"
 
 //library
-import { TrashIcon } from "@heroicons/react/16/solid"
+import { TrashIcon } from "@heroicons/react/24/solid"
 
 //assets
 import logomark from "../assets/logomark.svg"
