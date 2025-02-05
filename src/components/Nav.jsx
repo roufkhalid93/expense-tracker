@@ -11,7 +11,6 @@ import logomark from "../assets/logomark.svg"
 export default function Nav ({userName}) {
     return (
         <nav>
-            {userName}
             <NavLink
                 to="/"
                 aria-label="Go to home"
