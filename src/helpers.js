@@ -1,5 +1,5 @@
 
-export const wait = () => new Promise(res => setTimeout (res, Math.random() * 1500))
+export const wait = () => new Promise(res => setTimeout (res, Math.random() * 1000))
 
 //color
 const generateRandomColor = () => {
@@ -43,6 +43,24 @@ export const createExpense = ({name, amount, budgetId}) => {
     return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]))
 }
 
+
+//total spent by budget
+export const calculatSpentByBudget = (budgetId) => {
+    const expenses = fetchData("expenses") ?? [];
+    const budgetSpent = expenses.reduce((acc, expense) => {
+        //check if expense.id === budgetId I passed in
+        if(expense.budgetId !== budgetId) return acc
+
+        //add the current amount to my total
+        return acc += expense.amount
+    }, 0)
+    return budgetSpent;
+}
+
+
+//FORMATTING
+export const formatDateToLocaleString = (epoch) => new Date(epoch).toLocaleDateString();
+
 //format currency
 export const formatCurrency = (amt) => {
     return amt. toLocaleString(undefined, {
@@ -57,17 +75,4 @@ export const formatPercentage = (amt) => {
         style: "percent", 
         minimumFractionDigits: 0,
     })
-}
-
-//total spent by budget
-export const calculatSpentByBudget = (budgetId) => {
-    const expenses = fetchData("expenses") ?? [];
-    const budgetSpent = expenses.reduce((acc, expense) => {
-        //check if expense.id === budgetId I passed in
-        if(expense.budgetId !== budgetId) return acc
-
-        //add the current amount to my total
-        return acc += expense.amount
-    }, 0)
-    return budgetSpent;
 }
