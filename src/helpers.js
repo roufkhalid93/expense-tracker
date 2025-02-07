@@ -40,7 +40,7 @@ export const createExpense = ({name, amount, budgetId}) => {
 
 
 //total spent by budget
-export const calculatSpentByBudget = (budgetId) => {
+export const calculateSpentByBudget = (budgetId) => {
     const expenses = fetchData("expenses") ?? [];
     const budgetSpent = expenses.reduce((acc, expense) => {
         //check if expense.id === budgetId I passed in
